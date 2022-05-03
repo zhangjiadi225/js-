@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    X:<input id="xxx" type="text" />
+    Y:<input id="yyy" type="text" />
+    <script>
+        function mousePosition(ev) {
+            if (ev.pageX || ev.pageY) {
+                return { x: ev.pageX, y: ev.pageY };
+            }
+            return {
+                x: ev.clientX + document.body.scrollLeft - document.body.clientLeft,
+                y: ev.clientY + document.body.scrollTop - document.body.clientTop
+            };
+        };
+        function mouseMove(ev) {
+            ev = ev || window.event;
+            var mousePos = mousePosition(ev);
+            document.getElementById('xxx').value = mousePos.x;
+            document.getElementById('yyy').value = mousePos.y;
+        }
+        document.onmousemove = mouseMove;
+    </script>
+</body>
+
+</html>
